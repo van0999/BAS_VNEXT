@@ -16,6 +16,7 @@ sap.ui.define([
       } else {
         oBinding.filter([]);
         //test for git
+        // tets for git 2
       }
     },
   });
