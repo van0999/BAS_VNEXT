@@ -1,0 +1,17 @@
+<mvc:View controllerName="walkthrough.controller.View1"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m">
+  <Page id="page" title="{i18n>title}">
+    <Text id="text" text="{i18n>helloMsg}"/>
+    <Input id="input1" value="{person>/lastName}" valueLiveUpdate="true"/>
+    <Input id="input2" value="{person>/address/street}" valueLiveUpdate="true"/>
+    <VBox id="VBOX">
+      <items>
+        <Button id="btn1" text="{i18n>helloMsg}" press=".onShowMessage"/>
+        <Button id="btn2" text="BtnDialog" press=".onOpenDialog"/>
+        <mvc:XMLView id="invoiceListview" viewName="walkthrough.view.InvoiceList"/>
+        <mvc:XMLView id="oDataview" viewName="walkthrough.view.OData"/>
+      </items>
+    </VBox>
+  </Page>
+</mvc:View>

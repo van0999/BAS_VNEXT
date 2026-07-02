@@ -1,0 +1,147 @@
+{
+  "_version": "1.85.0",
+  "sap.app": {
+    "id": "walkthrough",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "dataSources": {
+      "DeliveryService": {
+        "uri": "/sap/opu/odata4/sap/zsb_vf912_01/srvd/sap/zsd_vf912_01/0001/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.27.0",
+      "toolsId": "93c02e0d-126e-4cfc-8299-db158d6c8380"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.149.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "walkthrough.i18n.i18n"
+        }
+      },
+      "invoice": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/Invoices.json"
+      },
+      "": {
+        "dataSource": "DeliveryService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true,
+          "groupProperties": {
+            "FavoriteProductGroup": {
+              "submit": "Auto"
+            },
+            "myAutoGroup": {
+              "submit": "Auto"
+            },
+            "myDirectGroup": {
+              "submit": "Direct"
+            },
+            "SalesOrderUpdateGroup": {
+              "submit": "API"
+            },
+            "UpdateGroup": {
+              "submit": "API"
+            }
+          },
+          "updateGroupId": "UpdateGroup"
+        }
+      },
+      "DeliveryService": {
+        "dataSource": "DeliveryService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "walkthrough.view",
+        "async": true,
+        "viewPath": "walkthrough.view"
+      },
+      "routes": [
+        {
+          "name": "RouteView1",
+          "pattern": ":?query:",
+          "target": [
+            "TargetView1"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetView1": {
+          "id": "View1",
+          "name": "View1"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "walkthrough.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    }
+  }
+}

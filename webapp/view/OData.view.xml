@@ -1,0 +1,41 @@
+<mvc:View controllerName="walkthrough.controller.Odata"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Table id="odataTable" items="{
+     path : '/ZC_VF912_01' ,
+					parameters : {
+						$count : true,
+						$select : ['Deliverydocument', 'Material', 'Plant'],
+						$$patchWithoutSideEffects : true
+					},
+					events : {
+						dataReceived : '.onDataEvents',
+						dataRequested : '.onDataEvents'
+					}     
+    
+     }">
+        <columns>
+            <Column>
+                <header>
+                    <Text text="Delivery Document"/>
+                </header>
+            </Column>
+            <Column>
+                <Text text="Material"/>
+            </Column>
+            <Column>
+                <Text text="Plant"/>
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem>
+
+                <Text text="{Deliverydocument}"/>
+                <Text text="{Material}"/>
+                <Text text="{Plant}"/>
+
+            </ColumnListItem>
+        </items>
+    </Table>
+
+</mvc:View>    
